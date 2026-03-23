@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pong</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hud" aria-label="Game information">
+        <div>
+          <p class="eyebrow">Canvas Arcade</p>
+          <h1>Simple Pong</h1>
+          <p class="subtitle">
+            Player 1 uses <strong>W</strong> and <strong>S</strong>. Player 2 uses
+            <strong>↑</strong> and <strong>↓</strong>.
+          </p>
+        </div>
+        <div class="controls">
+          <button id="toggleButton" type="button">Pause</button>
+          <button id="resetButton" type="button">Restart</button>
+        </div>
+      </section>
+
+      <section class="scoreboard" aria-label="Scoreboard">
+        <div>
+          <span class="label">Player 1</span>
+          <strong id="leftScore">0</strong>
+        </div>
+        <div>
+          <span class="label">Player 2</span>
+          <strong id="rightScore">0</strong>
+        </div>
+      </section>
+
+      <div class="canvas-frame">
+        <canvas id="pong" width="960" height="540" aria-label="Pong game board"></canvas>
+        <div id="overlay" class="overlay" aria-live="polite">Game paused</div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

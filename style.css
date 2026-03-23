@@ -1,0 +1,158 @@
+:root {
+  color-scheme: dark;
+  --bg: #0b1020;
+  --panel: rgba(14, 22, 43, 0.85);
+  --panel-border: rgba(148, 163, 184, 0.18);
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --accent: #38bdf8;
+  --accent-strong: #0ea5e9;
+  --shadow: 0 20px 45px rgba(15, 23, 42, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at top, rgba(56, 189, 248, 0.18), transparent 30%),
+    linear-gradient(160deg, #020617, var(--bg));
+  color: var(--text);
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.app-shell {
+  width: min(1080px, calc(100vw - 2rem));
+  display: grid;
+  gap: 1.25rem;
+}
+
+.hud,
+.scoreboard,
+.canvas-frame {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+}
+
+.hud,
+.scoreboard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+}
+
+.eyebrow,
+.label,
+.subtitle {
+  margin: 0;
+}
+
+.eyebrow,
+.label {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+h1 {
+  margin: 0.2rem 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.subtitle {
+  color: var(--muted);
+}
+
+.controls {
+  display: flex;
+  gap: 0.75rem;
+}
+
+button {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.8rem 1.2rem;
+  font: inherit;
+  font-weight: 700;
+  color: #020617;
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+button:hover,
+button:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(14, 165, 233, 0.28);
+}
+
+.scoreboard {
+  justify-content: center;
+  gap: clamp(1.5rem, 8vw, 6rem);
+  text-align: center;
+}
+
+.scoreboard strong {
+  display: block;
+  font-size: clamp(2rem, 7vw, 4rem);
+}
+
+.canvas-frame {
+  position: relative;
+  padding: 1rem;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.75), rgba(2, 6, 23, 0.95));
+}
+
+.overlay {
+  position: absolute;
+  inset: 1rem;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  background: rgba(2, 6, 23, 0.55);
+  color: white;
+  font-size: clamp(1.2rem, 2vw, 1.75rem);
+  font-weight: 700;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 160ms ease;
+}
+
+.overlay.visible {
+  opacity: 1;
+}
+
+@media (max-width: 720px) {
+  .hud,
+  .scoreboard {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .controls {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  button {
+    flex: 1 1 180px;
+  }
+}
